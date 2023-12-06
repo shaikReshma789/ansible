@@ -1,0 +1,4 @@
+[frontend]
+$ {aws_instance.server }
+[backend]
+$ {aws_instance.server-backend}
