@@ -1,4 +1,4 @@
 [frontend]
-$ {aws_instance.server }
+52.53.130.80
 [backend]
-$ {aws_instance.server-backend}
+54.193.222.30

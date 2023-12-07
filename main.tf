@@ -22,14 +22,34 @@ resource "aws_instance" "server-backend" {
     Name = "U21.local"
   }
 }
+
 resource "local_file" "inventory" {
   filename = "./inventory.yaml"
   content  = <<EOF
 [frontend]
-$ {aws_instance.server }
+${aws_instance.server.public_ip }
 [backend]
-$ {aws_instance.server-backend}
+${aws_instance.server-backend.public_ip}
 EOF
 }
 
+resource "local_file" "linux_playbook" {
+  filename = "./linux_playbook.yaml"
+  content  = <<EOF
+  EOF
+  
+}
 
+resource "local_file" "ubutu_playbook" {
+  filename = "./ubuntu_playbook.yaml"
+  content  = "write the playbook for ubuntu"
+}
+
+output "frontend" {
+    value = aws_instance.server.public_ip
+}
+
+output "backed" {
+    value = aws_instance.server-backend.public_ip
+  
+}
